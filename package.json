@@ -1,20 +1,32 @@
 {
-  "name": "",
-  "version": "0.1.0",
+  "name": "bolt",
   "description": "",
+  "version": "0.1.0",
   "main": "src/index.js",
   "scripts": {
-    "test": "grunt test"
+    "test": "mocha test --compilers js:babel/register -w",
+    "test:single": "istanbul cover -x test _mocha -- test --compilers js:babel/register",
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post",
+    "check-coverage": "istanbul check-coverage --statements 90 --branches 90 --functions 90 --lines 90",
+    "report-coverage": "cat ./coverage/lcov.info | codecov"
+  },
+  "czConfig": {
+    "path": "node_modules/cz-conventional-changelog"
+  },
+  "config": {
+    "ghooks": {
+      "pre-commit": "npm run test:single && npm run check-coverage"
+    }
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/mdibaiee/."
+    "url": "https://github.com/mdibaiee/bolt"
   },
   "keywords": [],
   "author": "Mahdi Dibaiee",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/mdibaiee/./issues"
+    "url": "https://github.com/mdibaiee/bolt/issues"
   },
   "files": [
     "types",
@@ -29,7 +41,16 @@
   },
   "homepage": "https://github.com/mdibaiee/.",
   "dependencies": {
+    "babel": "5.8.23",
     "fs-promise": "^0.3.1",
     "slackbots": "^0.4.0"
+  },
+  "devDependencies": {
+    "chai": "^3.3.0",
+    "codecov.io": "^0.1.6",
+    "ghooks": "^0.3.2",
+    "istanbul": "^0.3.22",
+    "mocha": "^2.3.3",
+    "semantic-release": "^4.3.5"
   }
 }
