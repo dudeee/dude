@@ -32,6 +32,7 @@ describe('Bot', function() {
         done();
       });
 
+      Tester.postMessageToGroup(GROUP, 'Test@');
       Tester.postMessageToGroup(GROUP, 'Testing@123');
     })
   })
