@@ -1,7 +1,6 @@
 {
   "name": "bolt",
   "description": "",
-  "version": "0.1.0",
   "main": "src/index.js",
   "scripts": {
     "test": "mocha test --compilers js:babel/register -w",
