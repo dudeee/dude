@@ -45,12 +45,10 @@ describe('Filters', () => {
   describe('remove', () => {
     it('should remove the specified filter', () => {
       let { id: first } = Filters.postprocess('test', value => {
-        console.log('first filter');
         return 0;
       });
 
       let { id: second } = Filters.postprocess('test', value => {
-        console.log('second filter');
         return 1;
       });
 

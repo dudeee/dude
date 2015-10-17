@@ -42,9 +42,9 @@
   },
   "homepage": "https://github.com/mdibaiee/.",
   "dependencies": {
+    "agenda": "0.6.28",
     "babel": "5.8.23",
     "fs-promise": "^0.3.1",
-    "node-schedule": "0.2.9",
     "slackbots": "^0.4.0"
   },
   "devDependencies": {

@@ -53,31 +53,6 @@ export default class Bot extends SlackBot {
   }
 
   /**
-   * Matches incoming messages against a regular expression using `RegExp.test`
-   * @param  {RegExp}   regex regular expression to match messages against
-   * @param  {Function} fn    the listener, invoked upon a matching message
-   */
-  match(regex, fn) {
-    this.on('got:message', message => {
-      if (regex.test(message.text)) fn(message);
-    })
-  }
-
-  /**
-   * Send a message to IM | Channel | Group
-   * @param  {string} target  The target to send the message to
-   * @param  {string} message Message's text content
-   * @param  {object} params  Message's parameters
-   *                          see https://api.slack.com/methods/chat.postMessage
-   * @return {Promise}        A promise which resolves upon succes and fails
-   *                            in case of errors
-   */
-  sendMessage(target, message, params) {
-    let options = Object.assign({}, this.globals, params);
-    return this.postTo(target, message, options);
-  }
-
-  /**
    * Set bot's icon, can be either an :emoji: or a url
    * @param  {string} icon The icon to use, must be formatted like :emoji: to be
    *                       set as an emoji, otherwise will be considered as URL.
