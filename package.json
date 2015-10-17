@@ -1,5 +1,5 @@
 {
-  "name": "bolt",
+  "name": "slack-bolt",
   "description": "",
   "main": "src/index.js",
   "scripts": {
