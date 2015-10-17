@@ -11,3 +11,7 @@ after_success:
 language: node_js
 node_js:
   - "4.1"
+sudo: false
+cache:
+  directories:
+    - node_modules
