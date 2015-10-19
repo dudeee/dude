@@ -4,6 +4,6 @@ import filters from './filters';
 
 let bot = new Bot(config);
 
-bot.start(() => {
-
+bot.on('open', () => {
+  
 })

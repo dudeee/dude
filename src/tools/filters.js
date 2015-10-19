@@ -50,6 +50,17 @@ export default {
    */
   remove(name, index) {
     filters[name].splice(index, 1);
+  },
+
+  /**
+   * Clear all the filters
+   */
+  clear() {
+    filters = {};
+  },
+
+  list() {
+    return filters;
   }
 }
 
@@ -65,6 +76,7 @@ export function filterable(name) {
     let originalFunction = descriptor.value;
     descriptor.value = function(...args) {
 
+      /* istanbul ignore next */
       let list = filters[name] || [];
 
       let preprocessors = list.filter(item => {

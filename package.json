@@ -29,9 +29,7 @@
     "url": "https://github.com/mdibaiee/bolt/issues"
   },
   "files": [
-    "types",
-    "build",
-    "index.js"
+    "src"
   ],
   "directories": {
     "lib": "lib"
@@ -42,9 +40,7 @@
   "homepage": "https://github.com/mdibaiee/.",
   "dependencies": {
     "agenda": "0.6.28",
-    "babel": "5.8.23",
-    "fs-promise": "^0.3.1",
-    "slackbots": "^0.4.0"
+    "babel": "5.8.23"
   },
   "devDependencies": {
     "chai": "^3.3.0",
