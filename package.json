@@ -6,12 +6,8 @@
     "test": "mocha test --compilers js:babel/register -w",
     "test:single": "istanbul cover -x test _mocha -- test --compilers js:babel/register",
     "test:file": "mocha --compilers js:babel/register",
-    "semantic-release": "semantic-release pre && npm publish && semantic-release post",
     "check-coverage": "istanbul check-coverage --statements 90 --branches 90 --functions 90 --lines 90",
     "report-coverage": "cat ./coverage/lcov.info | codecov"
-  },
-  "czConfig": {
-    "path": "node_modules/cz-conventional-changelog"
   },
   "config": {
     "ghooks": {
@@ -40,7 +36,8 @@
   "homepage": "https://github.com/mdibaiee/.",
   "dependencies": {
     "agenda": "0.6.28",
-    "babel": "5.8.23"
+    "babel": "5.8.23",
+    "slackbot-api": "^1.0.0"
   },
   "devDependencies": {
     "chai": "^3.3.0",

@@ -1,4 +1,4 @@
-import Bot from 'sbot';
+import Bot from 'slackbot-api';
 import config from './config';
 import loader from './loader';
 import initialize from './initialize';
