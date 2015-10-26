@@ -1,7 +1,8 @@
 export default bot => {
   bot.data = {
     permissions: {
-      admins: ['mahdi', 'milani']
+      admins: ['mahdi', 'milani'],
+      food: ['vahid']
     }
   };
 }
