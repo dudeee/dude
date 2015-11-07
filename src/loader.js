@@ -18,6 +18,9 @@ let files = modules.concat(tasks)
 
 export default bot => {
   for (let file of files) {
-    require(file)(bot);
+    let rq = require(file);
+
+    if (typeof rq === 'function') rq(bot);
+    rq.default(bot);
   }
 }
