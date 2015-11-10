@@ -6,13 +6,13 @@
  *                         < 6
  *                         > 2, < 5
  * @param  {Number} value
- * @return {Boolean}      
+ * @return {Boolean}
  */
 export function compare(format, value) {
   const GREATER_THAN = />=?\s?((?:\d|\.)+)/;
   const LESS_THAN = /<=?\s?((?:\d|\.)+)/;
 
-  let fmt = { gt: -Infinity, lt: Infinity, lte: null, gte: null };
+  let fmt = { gt: -Infinity, lt: Infinity, lte: Infinity, gte: -Infinity };
 
   let gt = GREATER_THAN.exec(format);
   let lt = LESS_THAN.exec(format);
