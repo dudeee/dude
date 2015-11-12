@@ -20,6 +20,7 @@ export default bot => {
   for (let file of files) {
     let rq = require(file);
 
+    bot.log.debug('[loader] require(%s)(bot)', file);
     if (typeof rq === 'function') rq(bot);
     else rq.default(bot);
   }

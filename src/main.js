@@ -5,6 +5,7 @@ import initialize from './initialize';
 import pocket from './pocket';
 import * as utils from './utils';
 import Agenda from 'agenda';
+import winston from 'winston';
 
 let bot = new Bot(config);
 
@@ -24,11 +25,28 @@ bot.on('open', () => {
     }
   }, () => {
     bot.agenda.start();
-  });
 
+    bot.log.verbose('[agenda] start job queue processing');
+
+    ['start', 'complete', 'success', 'fail'].forEach(event => {
+      bot.agenda.on(event, job => {
+        bot.log.verbose('[agenda] job %s %s', job.attrs.name, event);
+        bot.log.debug('[agenda] job %s, %s', job.attrs.name, event, job.attrs);
+      })
+    })
+  });
 
   pocket(bot);
   loader(bot);
 
-  console.log('Bolt is ready to work!');
+  bot.log = new (winston.Logger)({
+    transports: [
+      new (winston.transports.Console)(),
+      new (winston.transports.File)({ filename: 'bolt.log' })
+    ]
+  });
+
+  bot.log.level = process.env.BOLT_LOG_LEVEL || 'info';
+
+  bot.log.info('Bolt is ready to work!');
 });

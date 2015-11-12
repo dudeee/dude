@@ -2,7 +2,7 @@
   "name": "slack-bolt",
   "description": "",
   "main": "src/index.js",
-  "version": "1.5.2",
+  "version": "1.6.0",
   "scripts": {
     "test": "mocha test --compilers js:babel/register -w",
     "test:single": "istanbul cover -x test _mocha -- test --compilers js:babel/register",
@@ -40,7 +40,8 @@
     "babel": "5.8.3",
     "grunt-babel": "5.0.3",
     "mongoose": "4.2.3",
-    "slackbot-api": "^1.0.3"
+    "slackbot-api": "^1.0.3",
+    "winston": "2.1.0"
   },
   "devDependencies": {
     "chai": "^3.3.0",
