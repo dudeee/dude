@@ -21,6 +21,6 @@ export default bot => {
     let rq = require(file);
 
     if (typeof rq === 'function') rq(bot);
-    rq.default(bot);
+    else rq.default(bot);
   }
 }
