@@ -19,6 +19,17 @@ bot.on('open', () => {
     bot.data.help[name] = {description, long};
   }
 
+  bot.log = new (winston.Logger)({
+    transports: [
+      new (winston.transports.Console)(),
+      new (winston.transports.File)({ filename: 'bolt.log' })
+    ]
+  });
+
+  bot.log.level = process.env.BOLT_LOG_LEVEL || 'info';
+
+  bot.log.info('Bolt is ready to work!');
+
   bot.agenda = new Agenda({
     db: {
       address: 'mongodb://127.0.0.1/agenda'
@@ -38,15 +49,4 @@ bot.on('open', () => {
 
   pocket(bot);
   loader(bot);
-
-  bot.log = new (winston.Logger)({
-    transports: [
-      new (winston.transports.Console)(),
-      new (winston.transports.File)({ filename: 'bolt.log' })
-    ]
-  });
-
-  bot.log.level = process.env.BOLT_LOG_LEVEL || 'info';
-
-  bot.log.info('Bolt is ready to work!');
 });
