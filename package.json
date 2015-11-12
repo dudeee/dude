@@ -2,7 +2,7 @@
   "name": "slack-bolt",
   "description": "",
   "main": "src/index.js",
-  "version": "1.5.1",
+  "version": "1.5.2",
   "scripts": {
     "test": "mocha test --compilers js:babel/register -w",
     "test:single": "istanbul cover -x test _mocha -- test --compilers js:babel/register",
