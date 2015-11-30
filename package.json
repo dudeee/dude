@@ -4,17 +4,7 @@
   "main": "src/index.js",
   "version": "1.6.1",
   "scripts": {
-    "start": "node src/index",
-    "test": "mocha test --compilers js:babel/register -w",
-    "test:single": "istanbul cover -x test _mocha -- test --compilers js:babel/register",
-    "test:file": "mocha --compilers js:babel/register",
-    "check-coverage": "istanbul check-coverage --statements 90 --branches 90 --functions 90 --lines 90",
-    "report-coverage": "cat ./coverage/lcov.info | codecov"
-  },
-  "config": {
-    "ghooks": {
-      "pre-commit": "npm run test:single && npm run check-coverage"
-    }
+    "start": "node src/index"
   },
   "repository": {
     "type": "git",
@@ -35,7 +25,7 @@
   "engines": {
     "node": ">=4.0.0"
   },
-  "homepage": "https://github.com/mdibaiee/.",
+  "homepage": "https://github.com/mdibaiee/bolt",
   "dependencies": {
     "agenda": "0.7.2",
     "babel": "5.8.3",
@@ -44,12 +34,5 @@
     "slackbot-api": "^1.0.3",
     "winston": "2.1.0"
   },
-  "devDependencies": {
-    "chai": "^3.3.0",
-    "codecov.io": "^0.1.6",
-    "ghooks": "^0.3.2",
-    "istanbul": "^0.3.22",
-    "mocha": "^2.3.3",
-    "semantic-release": "^4.3.5"
-  }
+  "devDependencies": {}
 }
