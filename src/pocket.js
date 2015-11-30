@@ -97,7 +97,7 @@ export default bot => {
     }
   }, EventEmitter.prototype);
 
-  const URL = 'mongodb://localhost:27017/bolt';
+  const URL = process.env.MONGOLAB_URI || 'mongodb://localhost:27017/bolt';
   mongoose.connect(URL);
 
   let db = mongoose.connection;
