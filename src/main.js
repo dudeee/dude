@@ -32,7 +32,7 @@ bot.on('open', () => {
 
   bot.agenda = new Agenda({
     db: {
-      address: 'mongodb://127.0.0.1/agenda'
+      address: process.env.MONGOLAB_URI || 'mongodb://127.0.0.1/agenda'
     }
   }, () => {
     bot.agenda.start();
