@@ -50,3 +50,7 @@ bot.on('open', () => {
   pocket(bot);
   loader(bot);
 });
+
+if (process.env.PORT) {
+  require('http').createServer().listen(process.env.PORT);
+}
