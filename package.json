@@ -4,6 +4,7 @@
   "main": "src/index.js",
   "version": "1.6.1",
   "scripts": {
+    "start": "node src/index",
     "test": "mocha test --compilers js:babel/register -w",
     "test:single": "istanbul cover -x test _mocha -- test --compilers js:babel/register",
     "test:file": "mocha --compilers js:babel/register",
