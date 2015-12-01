@@ -18,6 +18,8 @@ export default bot => {
      * @return {Model}         Mongoose Model
      */
     model(key, schema) {
+      schema = new mongoose.Schema(schema);
+
       let Model = db.model(key, schema);
 
       return Model;
@@ -94,7 +96,9 @@ export default bot => {
      */
     remove(key, conditions) {
       return this.model(key).find(conditions).remove();
-    }
+    },
+
+    mongoose: mongoose
   }, EventEmitter.prototype);
 
   const URL = process.env.MONGOLAB_URI || 'mongodb://localhost:27017/bolt';
