@@ -10,6 +10,10 @@ export default bot => {
       threshold: {
         error: '>= 2',
         apdex: '<= 0.7'
+      },
+      spike: {
+        error: '>= 1',
+        apdex: '<= -0.3'
       }
     },
     quote: {

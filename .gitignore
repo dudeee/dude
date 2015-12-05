@@ -1,3 +1,4 @@
+src/initialize.js
 deploy.sh
 playground.js
 .env
