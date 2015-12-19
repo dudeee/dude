@@ -2,7 +2,12 @@
   "name": "slack-bolt",
   "description": "",
   "main": "src/index.js",
+<<<<<<< HEAD
   "version": "1.6.3",
+=======
+  "bin": "src/index.js",
+  "version": "1.6.2",
+>>>>>>> 5476df2... docs: documentation
   "scripts": {
     "start": "node src/index"
   },
