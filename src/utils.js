@@ -32,3 +32,5 @@ export function compare(format, value) {
   return value > fmt.gt && value < fmt.lt &&
          value >= fmt.gte && value <= fmt.lte;
 }
+
+export const numbers = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten'];

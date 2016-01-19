@@ -39,8 +39,6 @@ export default bot => {
 
       let instance = new Model(value);
 
-      models[key.toLowerCase()] = Model;
-
       return instance.save();
     },
 

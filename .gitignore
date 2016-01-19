@@ -1,6 +1,7 @@
 deploy.sh
 playground.js
-src/initialize.js
+src/config.js
+.env
 
 #### joe made this: https://goel.io/joe
 

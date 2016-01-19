@@ -39,17 +39,15 @@ export BOLT_LOG_LEVEL='verbose'; // silly, debug, verbose, info, warn, error
 
 Configure plugins, initialize, etc.
 
-Copy `initialize-sample.js` to `initialize.js`.
+Copy `config-sample.js` to `config.js`.
 ```javascript
-// initialize.js
+// config.js
 
-export default bot => {
-  bot.data = {
-    permissions: {
-      admin: ['mahdi', 'milani'],
-      server: ['milani', 'fattah']
-    }
-  };
+export default {
+  permissions: {
+    admin: ['mahdi', 'milani'],
+    server: ['milani', 'fattah']
+  }
 }
 ```
 
@@ -75,6 +73,9 @@ export default bot => {
   bot.help('roll', 'roll a number between 0-100');
 }
 ```
+
+In order to create plugins as separate modules, create a module with a name prefix
+of `bolt-`, e.g. `bolt-permission`.
 
 #API
 See [slackbot-api](https://github.com/mdibaiee/slackbot-api) for more information
