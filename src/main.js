@@ -1,7 +1,6 @@
 import Bot from 'slackbot-api';
 import config from './config';
 import loader from './loader';
-import initialize from './initialize';
 import pocket from './pocket';
 import * as utils from './utils';
 import Agenda from 'agenda';
@@ -9,16 +8,15 @@ import winston from 'winston';
 
 let bot = new Bot(config);
 
-initialize(bot);
-
 bot.on('open', () => {
+	bot.config = config;
   bot.utils = utils;
-  bot.data.help = [];
 
-  bot.help = (name, description, long) => {
-    bot.data.help[name] = {description, long};
-  }
-
+	// .help method, used to define `help` records for a plugin/task
+	bot.config.help = [];
+	bot.help = (name, description, long) => {
+		bot.config.help[name] = {description, long};
+	}
   bot.log = new (winston.Logger)({
     transports: [
       new (winston.transports.Console)(),
@@ -26,9 +24,8 @@ bot.on('open', () => {
     ]
   });
 
+	// log level
   bot.log.level = process.env.BOLT_LOG_LEVEL || 'info';
-
-  bot.log.info('Bolt is ready to work!');
 
   bot.agenda = new Agenda({
     db: {
@@ -36,12 +33,13 @@ bot.on('open', () => {
     }
   }, () => {
     bot.agenda.start();
+		bot.agenda.purge(() => {});
 
     bot.log.verbose('[agenda] start job queue processing');
 
     ['start', 'complete', 'success', 'fail'].forEach(event => {
       bot.agenda.on(event, job => {
-        bot.log.verbose('[agenda] job %s %s', job.attrs.name, event);
+        bot.log.debug('[agenda] job %s %s', job.attrs.name, event);
         bot.log.debug('[agenda] job %s, %s', job.attrs.name, event, job.attrs);
       })
     })
@@ -49,6 +47,8 @@ bot.on('open', () => {
 
   pocket(bot);
   loader(bot);
+
+  bot.log.info('Bolt is ready to work!');
 });
 
 if (process.env.PORT) {
