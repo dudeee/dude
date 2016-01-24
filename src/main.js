@@ -9,7 +9,7 @@ import winston from 'winston';
 
 let bot = new Bot(config);
 
-bot.on('open', () => {
+bot.on('open', async () => {
 	bot.config = config;
   bot.utils = utils;
 
@@ -28,23 +28,25 @@ bot.on('open', () => {
 	// log level
   bot.log.level = process.env.BOLT_LOG_LEVEL || 'info';
 
-  bot.agenda = new Agenda({
-    db: {
-      address: process.env.MONGOLAB_URI || 'mongodb://127.0.0.1/agenda'
-    }
-  }, () => {
-    bot.agenda.start();
-		bot.agenda.purge(() => {});
+	await (new Promise(resolve =>
+		bot.agenda = new Agenda({
+	    db: {
+	      address: process.env.MONGOLAB_URI || 'mongodb://127.0.0.1/agenda'
+	    }
+	  }, resolve)
+	));
 
-    bot.log.verbose('[agenda] start job queue processing');
+  bot.agenda.start();
+	bot.agenda.purge(() => {});
 
-    ['start', 'complete', 'success', 'fail'].forEach(event => {
-      bot.agenda.on(event, job => {
-        bot.log.debug('[agenda] job %s %s', job.attrs.name, event);
-        bot.log.debug('[agenda] job %s, %s', job.attrs.name, event, job.attrs);
-      })
+  bot.log.verbose('[agenda] start job queue processing');
+
+  ['start', 'complete', 'success', 'fail'].forEach(event => {
+    bot.agenda.on(event, job => {
+      bot.log.debug('[agenda] job %s %s', job.attrs.name, event);
+      bot.log.debug('[agenda] job %s, %s', job.attrs.name, event, job.attrs);
     })
-  });
+  })
 
   pocket(bot);
 	ask(bot);
