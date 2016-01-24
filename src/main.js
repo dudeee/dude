@@ -2,6 +2,7 @@ import Bot from 'slackbot-api';
 import config from './config';
 import loader from './loader';
 import pocket from './pocket';
+import ask from './ask';
 import * as utils from './utils';
 import Agenda from 'agenda';
 import winston from 'winston';
@@ -46,6 +47,7 @@ bot.on('open', () => {
   });
 
   pocket(bot);
+	ask(bot);
   loader(bot);
 
   bot.log.info('Bolt is ready to work!');

@@ -1,1 +1,0 @@
-BOLT_LOG_LEVEL=verbose nodemon --watch ../bolt-newrelic/build --watch . --watch ../bolt-permissions/build --watch ../bolt-quote/build --watch ../newrelic-api/build --watch ../bolt-poll/build --watch ../slackbot-api/build
