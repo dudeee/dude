@@ -12,7 +12,7 @@ export default bot => {
         return key + ' — ' + description;
       }).join('\n');
 
-      all += '\nFor detailed information about each command, try `help [command]`');
+      all += '\nFor detailed information about each command, try `help [command]`';
 
       message.reply(all);
     }
