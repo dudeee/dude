@@ -7,17 +7,17 @@ import * as utils from './utils';
 import Agenda from 'agenda';
 import winston from 'winston';
 
-let bot = new Bot(config);
+const bot = new Bot(config);
 
 bot.on('open', async () => {
-	bot.config = config;
+  bot.config = config;
   bot.utils = utils;
 
-	// .help method, used to define `help` records for a plugin/task
-	bot.config.help = [];
-	bot.help = (name, description, long) => {
-		bot.config.help[name] = {description, long};
-	}
+  // .help method, used to define `help` records for a plugin/task
+  bot.config.help = [];
+  bot.help = (name, description, long) => {
+    bot.config.help[name] = { description, long };
+  };
   bot.log = new (winston.Logger)({
     transports: [
       new (winston.transports.Console)(),
@@ -25,19 +25,19 @@ bot.on('open', async () => {
     ]
   });
 
-	// log level
+  // log level
   bot.log.level = process.env.BOLT_LOG_LEVEL || 'info';
 
-	await (new Promise(resolve =>
-		bot.agenda = new Agenda({
-	    db: {
-	      address: process.env.MONGOLAB_URI || 'mongodb://127.0.0.1/agenda'
-	    }
-	  }, resolve)
-	));
+  await (new Promise(resolve =>
+    bot.agenda = new Agenda({
+      db: {
+        address: process.env.MONGOLAB_URI || 'mongodb://127.0.0.1/agenda'
+      }
+    }, resolve)
+  ));
 
   bot.agenda.start();
-	bot.agenda.purge(() => {});
+  bot.agenda.purge(() => 0);
 
   bot.log.verbose('[agenda] start job queue processing');
 
@@ -45,11 +45,11 @@ bot.on('open', async () => {
     bot.agenda.on(event, job => {
       bot.log.debug('[agenda] job %s %s', job.attrs.name, event);
       bot.log.debug('[agenda] job %s, %s', job.attrs.name, event, job.attrs);
-    })
-  })
+    });
+  });
 
   pocket(bot);
-	ask(bot);
+  ask(bot);
   loader(bot);
 
   bot.log.info('Bolt is ready to work!');

@@ -12,10 +12,10 @@ export function compare(format, value) {
   const GREATER_THAN = />=?\s?((?:-|\d|\.)+)/;
   const LESS_THAN = /<=?\s?((?:-|\d|\.)+)/;
 
-  let fmt = { gt: -Infinity, lt: Infinity, lte: Infinity, gte: -Infinity };
+  const fmt = { gt: -Infinity, lt: Infinity, lte: Infinity, gte: -Infinity };
 
-  let gt = GREATER_THAN.exec(format);
-  let lt = LESS_THAN.exec(format);
+  const gt = GREATER_THAN.exec(format);
+  const lt = LESS_THAN.exec(format);
 
   if (gt && gt[0].includes('=')) {
     fmt.gte = +gt[1];
@@ -33,5 +33,7 @@ export function compare(format, value) {
          value >= fmt.gte && value <= fmt.lte;
 }
 
-export const numbers = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten'];
 export const emojify = a => `:${a}:`;
+
+export const numbers = ['zero', 'one', 'two', 'three', 'four', 'five',
+                        'six', 'seven', 'eight', 'nine', 'ten'];

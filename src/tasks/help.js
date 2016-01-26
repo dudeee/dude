@@ -1,15 +1,15 @@
 export default bot => {
   bot.listen(/help\s*(\w+)?/i, message => {
-    let [command] = message.match;
+    const [command] = message.match;
 
     if (command) {
-      let { long } = bot.config.help[command];
+      const { long } = bot.config.help[command];
 
       message.reply(long);
     } else {
       let all = Object.keys(bot.config.help).map(key => {
-        let { description } = bot.config.help[key];
-        return key + ' — ' + description;
+        const { description } = bot.config.help[key];
+        return `${key} — ${description}`;
       }).join('\n');
 
       all += '\nFor detailed information about each command, try `help [command]`';
@@ -17,4 +17,4 @@ export default bot => {
       message.reply(all);
     }
   });
-}
+};

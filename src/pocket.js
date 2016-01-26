@@ -8,7 +8,18 @@ import EventEmitter from 'events';
  */
 
 export default bot => {
-  let models = {};
+  const URL = process.env.MONGOLAB_URI || 'mongodb://localhost:27017/bolt';
+  mongoose.connect(URL);
+
+  const db = mongoose.connection;
+
+  db.on('error', err => {
+    bot.pocket.emit('error', err);
+  });
+
+  db.once('open', cb => {
+    bot.pocket.emit('open', cb);
+  });
 
   bot.pocket = Object.assign({
     /**
@@ -20,7 +31,7 @@ export default bot => {
     model(key, schema) {
       schema = new mongoose.Schema(schema);
 
-      let Model = db.model(key, schema);
+      const Model = db.model(key, schema);
 
       return Model;
     },
@@ -35,9 +46,9 @@ export default bot => {
      * @return {Promise}
      */
     save(key, value) {
-      let Model = db.model(key);
+      const Model = db.model(key);
 
-      let instance = new Model(value);
+      const instance = new Model(value);
 
       return instance.save();
     },
@@ -51,8 +62,8 @@ export default bot => {
      * @return {Promise}
      */
     update(key, conditions, doc, options) {
-      let Model = db.model(key);
-      let Collection = db.collection(Model.collection);
+      const Model = db.model(key);
+      const Collection = db.collection(Model.collection);
 
       return Collection.update(conditions, doc, options);
     },
@@ -66,8 +77,8 @@ export default bot => {
      * @return {Query}
      */
     find(key, conditions) {
-      let Model = db.model(key);
-      let Collection = db.collection(Model.collection);
+      const Model = db.model(key);
+      const Collection = db.collection(Model.collection);
 
       return Collection.find(conditions);
     },
@@ -80,8 +91,8 @@ export default bot => {
      * @return {Query}
      */
     where(key, property) {
-      let Model = db.model(key);
-      let Collection = db.collection(Model.collection);
+      const Model = db.model(key);
+      const Collection = db.collection(Model.collection);
 
       return Collection.where(property);
     },
@@ -96,19 +107,6 @@ export default bot => {
       return this.model(key).find(conditions).remove();
     },
 
-    mongoose: mongoose
+    mongoose
   }, EventEmitter.prototype);
-
-  const URL = process.env.MONGOLAB_URI || 'mongodb://localhost:27017/bolt';
-  mongoose.connect(URL);
-
-  let db = mongoose.connection;
-
-  db.on('error', err => {
-    bot.pocket.emit('error', err);
-  });
-
-  db.once('open', cb => {
-    bot.pocket.emit('open', cb);
-  });
-}
+};
