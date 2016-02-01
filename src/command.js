@@ -11,25 +11,25 @@ const types = {
   char: '\\S'
 };
 
-const group = (string) => {
+const group = string => {
   const groups = /\((.*?)\)/g;
 
   return string.replace(groups, (a, inside) => `(?:${inside})`);
 };
 
-const optional = (string) => {
+const optional = string => {
   const parameters = /(\[(.*?)\])/g;
 
   return string.replace(parameters, (a, b, type) => `(${types[type]}*)`);
 };
 
-const required = (string) => {
+const required = string => {
   const parameters = /(<(.*?)>)/g;
 
   return string.replace(parameters, (a, b, type) => `(${types[type]}+)`);
 };
 
-const space = (string) => {
+const space = string => {
   const spaces = /\s/g;
 
   return string.replace(spaces, '\\s*');
@@ -44,7 +44,8 @@ export default bot => {
       string = '_';
     }
 
-    for (const key of Object.keys(map)) {
+    const keys = Object.keys(map);
+    for (const key of keys) {
       const value = map[key];
       const r = new RegExp(key, 'g');
 
