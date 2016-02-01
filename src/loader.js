@@ -18,10 +18,14 @@ const files = modules.concat(tasks)
 
 export default bot => {
   for (const file of files) {
-    const rq = require(file);
+    try {
+      const rq = require(file);
 
-    bot.log.debug('[loader] require(%s)(bot)', file);
-    if (typeof rq === 'function') rq(bot);
-    else rq.default(bot);
+      bot.log.debug('[loader] require(%s)(bot)', file);
+      if (typeof rq === 'function') rq(bot);
+      else rq.default(bot);
+    } catch (e) {
+      bot.log.error('[loader] error loading %s: %s', file, e);
+    }
   }
 };

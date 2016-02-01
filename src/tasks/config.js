@@ -1,7 +1,7 @@
 import _ from 'lodash';
 
 export default bot => {
-  bot.listen(/config list/, message => {
+  bot.command('config list', message => {
     const list = Object.keys(bot.config).map(key => {
       const stringified = JSON.stringify(bot.config[key], null, 2);
       return `${key}: ${stringified}`;
@@ -10,25 +10,38 @@ export default bot => {
     message.reply(`\`\`\` ${list} \`\`\``);
   });
 
-  bot.listen(/config get (\S+)/, message => {
+  bot.command('config get <char>', message => {
     const [key] = message.match;
 
-    message.reply(_.get(bot.config, key));
+    let value = _.get(bot.config, key);
+
+    if (typeof value === 'object') {
+      value = JSON.stringify(value, null, 2);
+    }
+
+    message.reply(`\`\`\`${value}\`\`\``);
   });
 
-  bot.listen(/config set (\S+) (\S+)/, message => {
-    const [key, value] = message.match;
+  bot.command('config set <char> <string>', message => {
+    const key = message.match[0];
+    let value = message.match[1];
+
+    try {
+      value = JSON.parse(value);
+    } catch (e) {
+      //
+    }
 
     _.set(bot.config, key, value);
   });
 
-  bot.listen(/config unset (\S+)/, message => {
+  bot.command('config unset <char>', message => {
     const [key] = message.match;
 
     _.set(bot.config, key, undefined);
   });
 
-  bot.listen(/config add (\S+) (\S+)/, message => {
+  bot.command('config add <char> <string>', message => {
     const [key, value] = message.match;
 
     const current = _.get(bot.config, key);
@@ -37,7 +50,7 @@ export default bot => {
     }
   });
 
-  bot.listen(/config remove (\S+) (\S+)/, message => {
+  bot.command('config remove <char> <string>', message => {
     const [key, value] = message.match;
 
     const current = _.get(bot.config, key);

@@ -3,6 +3,7 @@ import config from './config';
 import loader from './loader';
 import pocket from './pocket';
 import ask from './ask';
+import command from './command';
 import * as utils from './utils';
 import Agenda from 'agenda';
 import winston from 'winston';
@@ -26,7 +27,7 @@ bot.on('open', async () => {
   });
 
   // log level
-  bot.log.level = process.env.BOLT_LOG_LEVEL || 'info';
+  bot.log.level = bot.config.log;
 
   await (new Promise(resolve =>
     bot.agenda = new Agenda({
@@ -50,6 +51,7 @@ bot.on('open', async () => {
 
   pocket(bot);
   ask(bot);
+  command(bot);
   loader(bot);
 
   bot.log.info('Bolt is ready to work!');
