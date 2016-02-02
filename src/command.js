@@ -20,13 +20,13 @@ const group = string => {
 const optional = string => {
   const parameters = /(\[(.*?)\])/g;
 
-  return string.replace(parameters, (a, b, type) => `(${types[type]}*)`);
+  return string.replace(parameters, (a, b, type) => `(${types[type] || type}*)`);
 };
 
 const required = string => {
   const parameters = /(<(.*?)>)/g;
 
-  return string.replace(parameters, (a, b, type) => `(${types[type]}+)`);
+  return string.replace(parameters, (a, b, type) => `(${types[type] || type}+)`);
 };
 
 const space = string => {
