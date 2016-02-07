@@ -1,7 +1,10 @@
 deploy.sh
 playground.js
 src/config.js
+ecosystem.json
 .env
+run
+build
 
 #### joe made this: https://goel.io/joe
 
