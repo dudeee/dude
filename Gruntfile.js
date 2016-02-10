@@ -10,19 +10,19 @@ module.exports = function(grunt) {
         }]
       }
     },
-		clean: {
-			files: ['build/**/*.js']
-		},
+    clean: {
+      files: ['build/**/*.js']
+    },
     watch: {
       scripts: {
         files: ['src/**/*.js', 'server/**/*.js'],
-        tasks: ['babel']
+        tasks: ['clean', 'babel']
       }
     }
   });
 
   grunt.loadNpmTasks('grunt-babel');
-	grunt.loadNpmTasks('grunt-contrib-clean');
+  grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-watch');
 
   grunt.registerTask('default', ['clean', 'babel']);

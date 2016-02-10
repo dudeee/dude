@@ -1,9 +1,10 @@
 deploy.sh
 playground.js
-src/config.js
+config.js
 ecosystem.json
 .env
 run
+run-dashboard
 build
 
 #### joe made this: https://goel.io/joe

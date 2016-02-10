@@ -1,9 +1,11 @@
 {
   "name": "slack-bolt",
+  "version": "1.10.0",
   "description": "",
   "main": "build/index.js",
-  "bin": "build/index.js",
-  "version": "1.9.3",
+  "bin": {
+    "bolt": "build/dashboard/index.js"
+  },
   "scripts": {
     "start": "node build/index",
     "lint": "eslint src"
@@ -36,7 +38,9 @@
   "dependencies": {
     "agenda": "0.7.2",
     "babel": "5.8.3",
-    "grunt-babel": "5.0.3",
+    "blessed": "0.1.81",
+    "blessed-contrib": "2.5.3",
+    "chalk": "1.1.1",
     "lodash": "3.10.1",
     "mongoose": "4.2.3",
     "slackbot-api": ">=1.5.7",

@@ -1,0 +1,52 @@
+import blessed from 'blessed';
+import box from './styles/box';
+import screen from '../screen';
+import { cloneDeep } from 'lodash';
+import chalk from 'chalk';
+
+const log = blessed.log({
+  ...cloneDeep(box),
+  label: 'logs',
+  scrollable: true,
+  alwaysScroll: true,
+});
+
+screen.on('route', route => {
+  if (route === 'log') {
+    log.show();
+  } else {
+    log.hide();
+  }
+});
+
+screen.on('log', event => {
+  let color;
+  switch (event.level) {
+    case 'error':
+      color = 'red';
+      break;
+    case 'warn':
+      color = 'orange';
+      break;
+    case 'debug':
+      color = 'yellow';
+      break;
+    case 'info':
+      color = 'blue';
+      break;
+    case 'verbose':
+      color = 'white';
+      break;
+    case 'silly':
+      color = 'gray';
+      break;
+    default:
+      color = 'white';
+      break;
+  }
+
+
+  log.add(`[${chalk[color](event.level)}] ${event.message}`);
+});
+
+export default log;

@@ -1,5 +1,5 @@
 export default bot => {
-  bot.command('help [char]', message => {
+  bot.command('^help [char]', message => {
     const [command] = message.match;
     const cmd = bot.config.help[command];
 
