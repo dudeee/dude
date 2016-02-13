@@ -1,6 +1,6 @@
 {
   "name": "slack-bolt",
-  "version": "1.10.0",
+  "version": "1.11.0",
   "description": "",
   "main": "build/index.js",
   "bin": {
@@ -8,7 +8,8 @@
   },
   "scripts": {
     "start": "node build/index",
-    "lint": "eslint src"
+    "lint": "eslint src",
+    "dashboard": "node build/dashboard/index"
   },
   "config": {
     "ghooks": {
@@ -41,6 +42,8 @@
     "blessed": "0.1.81",
     "blessed-contrib": "2.5.3",
     "chalk": "1.1.1",
+    "i18next": "2.1.0",
+    "i18next-node-fs-backend": "0.0.6",
     "lodash": "3.10.1",
     "mongoose": "4.2.3",
     "slackbot-api": ">=1.5.7",

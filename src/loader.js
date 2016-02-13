@@ -16,16 +16,15 @@ const files = modules.concat(tasks)
   path.resolve(tasksPath, module)
 );
 
-export default bot => {
+export default async bot => {
   for (const file of files) {
     try {
       const rq = require(file);
 
       bot.log.debug('[loader] require(%s)(bot)', file);
-      if (typeof rq === 'function') rq(bot);
-      else rq.default(bot);
+      rq(bot);
     } catch (e) {
-      bot.log.error('[loader] error loading %s: %s', file, e);
+      bot.log.error('[loader]', bot.t('loader.error'), '%s: %s', file, e);
     }
   }
 };

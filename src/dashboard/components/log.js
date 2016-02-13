@@ -1,11 +1,10 @@
 import blessed from 'blessed';
 import box from './styles/box';
 import screen from '../screen';
-import { cloneDeep } from 'lodash';
 import chalk from 'chalk';
 
 const log = blessed.log({
-  ...cloneDeep(box),
+  ...box(),
   label: 'logs',
   scrollable: true,
   alwaysScroll: true,
@@ -14,6 +13,7 @@ const log = blessed.log({
 screen.on('route', route => {
   if (route === 'log') {
     log.show();
+    log.focus();
   } else {
     log.hide();
   }

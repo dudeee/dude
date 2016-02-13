@@ -2,24 +2,23 @@ import blessed from 'blessed';
 import input from './styles/input';
 import box from './styles/box';
 import screen from '../screen';
-import { cloneDeep } from 'lodash';
 
 const form = blessed.form({
-  ...cloneDeep(box),
+  ...box(),
   label: 'message',
   keys: true,
   vi: true
 });
 
 const channel = blessed.textbox({
-  ...cloneDeep(input),
+  ...input(),
   top: 0,
   left: 0,
   label: 'channel',
 });
 
 const text = blessed.textarea({
-  ...cloneDeep(input),
+  ...input(),
   top: channel.height,
   left: 0,
   height: form.height - channel.height - 5,
@@ -28,7 +27,7 @@ const text = blessed.textarea({
 });
 
 const options = blessed.textarea({
-  ...cloneDeep(input),
+  ...input(),
   top: channel.height,
   left: '80%',
   height: form.height - channel.height - 5,
@@ -37,7 +36,7 @@ const options = blessed.textarea({
 });
 
 const button = blessed.button({
-  ...cloneDeep(input),
+  ...input(),
   top: channel.height + text.height,
   left: 0,
   content: 'send',

@@ -1,4 +1,6 @@
-export default {
+import { cloneDeep } from 'lodash';
+
+export default () => cloneDeep({
   height: 3,
 
   mouse: true,
@@ -20,4 +22,4 @@ export default {
       }
     }
   }
-};
+});

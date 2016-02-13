@@ -20,6 +20,12 @@ export default blessed.listbar({
         screen.emit('route', 'message');
       }
     },
+    stats: {
+      keys: 's',
+      callback() {
+        screen.emit('route', 'stats');
+      }
+    },
     quit: {
       keys: 'q',
       callback() {

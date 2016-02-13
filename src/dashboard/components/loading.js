@@ -1,9 +1,8 @@
 import blessed from 'blessed';
 import box from './styles/box';
-import { cloneDeep } from 'lodash';
 
 const loading = blessed.loading({
-  ...cloneDeep(box),
+  ...box(),
   width: 'half',
   height: 'shrink',
   top: 'center',

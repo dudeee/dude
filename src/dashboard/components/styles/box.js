@@ -1,7 +1,8 @@
 import screen from '../../screen';
 import menu from '../menu';
+import { cloneDeep } from 'lodash';
 
-export default {
+export default () => cloneDeep({
   top: 0,
   left: 0,
 
@@ -11,6 +12,8 @@ export default {
   mouse: true,
   keys: true,
   vi: true,
+
+  keyable: true,
 
   border: {
     type: 'line'
@@ -31,4 +34,4 @@ export default {
       }
     }
   }
-};
+});

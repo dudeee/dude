@@ -1,0 +1,12 @@
+{
+  "main": {
+    "ready": "Bolt is ready to work!"
+  },
+  "agenda": {
+    "start": "started processing job queue",
+    "job": "job"
+  },
+  "loader": {
+    "error": "error loading %s: %s"
+  }
+}
