@@ -8,5 +8,13 @@
   },
   "loader": {
     "error": "error loading %s: %s"
+  },
+  "dialogs": {
+    "greetings": {
+      "0": "Hello buddy!",
+      "1": "Hey!",
+      "2": "Hi"
+    },
+    "not-understood": "I couldn't understand what you're trying to do. Maybe you misspelled a command."
   }
 }
