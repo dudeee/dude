@@ -4,7 +4,7 @@ import winston from 'winston';
 export default bot => {
   bot.config.log = {
     file: true,
-    console: !module.parent,
+    console: !module.parent.parent.parent,
 
     ...bot.config.log
   };
