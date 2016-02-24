@@ -1,6 +1,7 @@
 import i18next from 'i18next';
 import Backend from 'i18next-node-fs-backend';
 import path from 'path';
+import fs from 'fs-promise';
 
 export default async bot =>
   new Promise((resolve, reject) => {
@@ -17,8 +18,25 @@ export default async bot =>
       }, (err) => {
         if (err) return reject(err);
 
-        bot.t = i18next.t.bind(i18next);
+        const keys = /%([^%]+)%/gi;
+        bot.t = (key, substitutions = {}) =>
+          i18next.t(key).replace(keys, (match, name) => substitutions[name] || '');
+
         bot.i18n = i18next;
+        bot.i18n.load = async localesPath => {
+          const languages = await fs.readdir(localesPath);
+
+          for (const lang of languages) {
+            const langPath = path.join(localesPath, lang);
+            const files = await fs.readdir(langPath);
+
+            for (const file of files) {
+              const ns = path.basename(file, '.json');
+              const fullPath = path.join(langPath, file);
+              bot.i18n.addResourceBundle(lang, ns, require(fullPath), true, true);
+            }
+          }
+        };
         resolve(i18next);
       });
   });

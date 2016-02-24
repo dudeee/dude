@@ -1,6 +1,6 @@
 {
   "name": "slack-bolt",
-  "version": "1.11.2",
+  "version": "1.12.0",
   "description": "",
   "main": "build/index.js",
   "bin": {
@@ -42,6 +42,7 @@
     "blessed": "0.1.81",
     "blessed-contrib": "2.5.3",
     "chalk": "1.1.1",
+    "fs-promise": "0.4.1",
     "i18next": "2.1.0",
     "i18next-node-fs-backend": "0.0.6",
     "lodash": "3.10.1",

@@ -15,6 +15,7 @@
       "1": "Hey!",
       "2": "Hi"
     },
-    "not-understood": "I couldn't understand what you're trying to do. Maybe you misspelled a command."
+    "not-understood": "I couldn't understand what you're trying to do. Maybe you misspelled a command.",
+    "empty": "Couldn't find anything to show. 😶"
   }
 }
