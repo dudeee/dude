@@ -1,5 +1,6 @@
 import contrib from 'blessed-contrib';
 import box from '../styles/box';
+import { server } from '../../messenger';
 import screen from '../../screen';
 
 const line = contrib.line({
@@ -13,24 +14,10 @@ const line = contrib.line({
   height: '50%-1'
 });
 
-const INTERVAL = 500;
-const data = {
-  title: 'rss',
-  x: [0, 0, 0, 0, 0],
-  y: [0, 0, 0, 0, 0]
-};
-setInterval(() => {
-  data.x.shift();
-  const date = new Date();
-  data.x.push(`${date.getMinutes()}:${date.getSeconds()}`);
-
-  const mem = process.memoryUsage();
-  data.y.shift();
-  const readable = mem.rss / 1000000;
-  data.y.push(readable);
-  line.setData([data]);
+server.on('memory', (message, data) => {
+  line.setData(data);
 
   screen.render();
-}, INTERVAL);
+});
 
 export default line;

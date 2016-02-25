@@ -1,5 +1,6 @@
 import blessed from 'blessed';
 import screen from '../../screen';
+import { server } from '../../messenger';
 
 const uptime = blessed.box({
   bottom: 0,
@@ -11,10 +12,10 @@ const uptime = blessed.box({
   }
 });
 
-const INTERVAL = 100;
-setInterval(() => {
-  uptime.setContent(`uptime: ${process.uptime().toString()}`);
+server.on('uptime', (message, data) => {
+  uptime.setContent(`uptime: ${data}`);
+
   screen.render();
-}, INTERVAL);
+});
 
 export default uptime;

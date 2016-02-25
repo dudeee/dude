@@ -1,6 +1,7 @@
 import contrib from 'blessed-contrib';
-import screen from '../../screen';
 import box from '../styles/box';
+import { server } from '../../messenger';
+import screen from '../../screen';
 
 const errors = contrib.line({
   ...box(),
@@ -14,47 +15,10 @@ const errors = contrib.line({
   top: '50%-1'
 });
 
-const INTERVAL = 10 * 1000;
-const exceptions = {
-  title: 'exceptions',
-  x: [0, 0, 0, 0, 0],
-  y: [0, 0, 0, 0, 0],
-  style: {
-    line: 'red'
-  },
-  count: 0
-};
-const rejections = {
-  title: 'rejections',
-  x: [0, 0, 0, 0, 0],
-  y: [0, 0, 0, 0, 0],
-  style: {
-    line: 'yellow'
-  },
-  count: 0
-};
-
-process.on('uncaughtException', () => exceptions.count++);
-process.on('uncaughtRejection', () => rejections.count++);
-setInterval(() => {
-  exceptions.x.shift();
-  rejections.x.shift();
-  const date = new Date();
-  exceptions.x.push(`${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`);
-  rejections.x.push(`${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`);
-
-  exceptions.y.shift();
-  rejections.y.shift();
-
-  exceptions.y.push(exceptions.count);
-  rejections.y.push(rejections.count);
-
-  errors.setData([exceptions, rejections]);
-
-  exceptions.count = 0;
-  rejections.count = 0;
+server.on('errors', (message, data) => {
+  errors.setData(data);
 
   screen.render();
-}, INTERVAL);
+});
 
 export default errors;

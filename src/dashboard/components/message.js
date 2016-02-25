@@ -2,6 +2,7 @@ import blessed from 'blessed';
 import input from './styles/input';
 import box from './styles/box';
 import screen from '../screen';
+import { client } from '../messenger';
 
 const form = blessed.form({
   ...box(),
@@ -48,6 +49,11 @@ form.append(text);
 form.append(options);
 form.append(button);
 
+const DEFAULTS = {
+  websocket: false,
+  parse: 'full'
+};
+
 form.on('submit', () => {
   let opts;
   try {
@@ -55,11 +61,14 @@ form.on('submit', () => {
   } catch (e) {
     opts = {};
   }
-  screen.emit('message', channel.value, text.value, opts);
+
+  opts = { ...DEFAULTS, ...opts };
+  client.send('message', [channel.value, text.value, opts]);
   channel.clearValue();
   text.clearValue();
   options.clearValue();
 });
+
 button.on('press', () => form.submit());
 
 screen.on('route', route => {

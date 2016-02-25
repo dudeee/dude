@@ -2,6 +2,7 @@ import blessed from 'blessed';
 import box from './styles/box';
 import screen from '../screen';
 import chalk from 'chalk';
+import { server } from '../messenger';
 
 const log = blessed.log({
   ...box(),
@@ -19,7 +20,7 @@ screen.on('route', route => {
   }
 });
 
-screen.on('log', event => {
+server.on('log', (message, event) => {
   let color;
   switch (event.level) {
     case 'error':

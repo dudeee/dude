@@ -1,7 +1,7 @@
 import contrib from 'blessed-contrib';
 import screen from '../../screen';
 import box from '../styles/box';
-import os from 'os';
+import { server } from '../../messenger';
 
 const bar = contrib.bar({
   ...box(),
@@ -12,29 +12,10 @@ const bar = contrib.bar({
   maxHeight: 100
 });
 
-const data = {
-  titles: [],
-  data: []
-};
-const INTERVAL = 1000;
-setInterval(() => {
-  const cpus = os.cpus();
-
-  data.titles = [];
-  data.data = [];
-  cpus.forEach((cpu, index) => {
-    const { user, sys, idle } = cpu.times;
-    const used = user + sys;
-    const total = used + idle;
-
-    const percentage = Math.round(total / used);
-
-    data.titles.push(`cpu ${index}`);
-    data.data.push(percentage);
-  });
-
+server.on('cpu', (message, data) => {
   bar.setData(data);
+
   screen.render();
-}, INTERVAL);
+});
 
 export default bar;

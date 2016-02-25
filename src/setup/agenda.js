@@ -16,7 +16,7 @@ export default async bot => {
 
   ['start', 'complete', 'success', 'fail'].forEach(event => {
     bot.agenda.on(event, job => {
-      bot.log.debug('[agenda]', bot.t('agenda.job'), '%s %s', job.attrs.name, event, job.attrs);
+      bot.log.debug('[agenda]', bot.t('agenda.job'), job.attrs.name, event, job.attrs);
     });
   });
 };
