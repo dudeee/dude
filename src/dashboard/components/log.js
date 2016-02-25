@@ -39,7 +39,7 @@ server.on('log', (message, event) => {
       color = 'white';
       break;
     case 'silly':
-      color = 'gray';
+      color = 'dim';
       break;
     default:
       color = 'white';

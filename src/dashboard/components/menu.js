@@ -14,16 +14,22 @@ export default blessed.listbar({
         screen.emit('route', 'log');
       }
     },
+    stats: {
+      keys: 's',
+      callback() {
+        screen.emit('route', 'stats');
+      }
+    },
     message: {
       keys: 'm',
       callback() {
         screen.emit('route', 'message');
       }
     },
-    stats: {
-      keys: 's',
+    chat: {
+      keys: 'c',
       callback() {
-        screen.emit('route', 'stats');
+        screen.emit('route', 'chat');
       }
     },
     quit: {

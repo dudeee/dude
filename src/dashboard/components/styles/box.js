@@ -14,6 +14,7 @@ export default () => cloneDeep({
   vi: true,
 
   keyable: true,
+  input: true,
 
   border: {
     type: 'line'
@@ -32,6 +33,11 @@ export default () => cloneDeep({
       border: {
         fg: 'blue'
       }
+    },
+
+    selected: {
+      bg: 'cyan',
+      fg: 'black'
     }
   }
 });

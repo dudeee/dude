@@ -6,9 +6,7 @@ import { client } from '../messenger';
 
 const form = blessed.form({
   ...box(),
-  label: 'message',
-  keys: true,
-  vi: true
+  label: 'message'
 });
 
 const channel = blessed.textbox({
