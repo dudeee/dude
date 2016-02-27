@@ -9,6 +9,7 @@ import menu from './components/menu';
 // import loading from './components/loading';
 import chat from './components/chat';
 import stats from './components/stats';
+import { client } from './messenger';
 
 screen.append(message);
 screen.append(log);
@@ -20,4 +21,9 @@ screen.append(menu);
 screen.render();
 
 screen.emit('route', 'chat');
+
+const TIMEOUT = 1000;
+setTimeout(() => {
+  client.send('start');
+}, TIMEOUT);
 // loading.load('Please wait');

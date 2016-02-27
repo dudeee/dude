@@ -1,3 +1,5 @@
+import _ from 'lodash';
+
 export default (bot, { client, server }) => {
   bot.hear(message => {
     client.send('message', message);
@@ -19,6 +21,23 @@ export default (bot, { client, server }) => {
     const history = await bot.call(`${method}.history`, { channel });
 
     message.reply(history.messages || []);
+  });
+
+  let conf;
+  server.on('quit', message => {
+    console.log('quit');
+    bot.config.notfound = conf;
+    message.reply(true);
+  });
+
+  server.on('start', () => {
+    console.log('start');
+    conf = _.cloneDeep(bot.config.notfound);
+    bot.config.notfound = false;
+  });
+
+  server.on('exclude', async (message, channel) => {
+    _.set(bot.config, 'notfound.exclude', [channel]);
   });
 
   server.on('react', async (message, data) => {

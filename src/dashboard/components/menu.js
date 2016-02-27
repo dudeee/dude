@@ -1,5 +1,6 @@
 import blessed from 'blessed';
 import screen from '../screen';
+import { client } from '../messenger';
 
 const height = 1;
 export default blessed.listbar({
@@ -35,7 +36,9 @@ export default blessed.listbar({
     quit: {
       keys: 'q',
       callback() {
-        process.exit(0);
+        client.request('quit', {}, () => {
+          process.exit(0);
+        });
       }
     }
   }

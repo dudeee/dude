@@ -25,12 +25,19 @@ const channels = blessed.list({
 const messages = blessed.list({
   ...box(),
   width: '80%-1',
-  height: '100%-2',
+  height: '100%-5',
   label: 'messages',
   top: 0,
   left: '20%',
   scrollable: true,
   alwaysScroll: true,
+});
+
+const messageinput = blessed.textbox({
+  ...input(),
+  bottom: 0,
+  left: '20%',
+  width: '80%-1'
 });
 
 const actions = blessed.form({
@@ -81,6 +88,9 @@ button.on('press', () => {
   el.key('tab', () => {
     chat.focusNext();
   });
+  el.key('S-tab', () => {
+    chat.focusPrevious();
+  });
 });
 
 let channellist = [];
@@ -126,6 +136,8 @@ channels.on('select', (selected) => {
     showMessages();
   });
 
+  client.send('exclude', name);
+
   showMessages();
 });
 
@@ -166,6 +178,19 @@ const update = () => {
 update();
 setInterval(update, INTERVAL);
 
+const DEFAULTS = {
+  websocket: false,
+  parse: 'full'
+};
+
+messageinput.key('enter', () => {
+  client.send('message', [currentChannel.id, messageinput.value, DEFAULTS]);
+
+  messageinput.clearValue();
+
+  update();
+});
+
 server.on('message', (message, data) => {
   messagelist.push(data);
   if (currentChannel.id === data.channel) {
@@ -193,5 +218,6 @@ screen.on('route', route => {
 
 chat.append(channels);
 chat.append(messages);
+chat.append(messageinput);
 chat.append(actions);
 export default chat;
