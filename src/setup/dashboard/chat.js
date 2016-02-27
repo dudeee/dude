@@ -25,13 +25,11 @@ export default (bot, { client, server }) => {
 
   let conf;
   server.on('quit', message => {
-    console.log('quit');
     bot.config.notfound = conf;
     message.reply(true);
   });
 
   server.on('start', () => {
-    console.log('start');
     conf = _.cloneDeep(bot.config.notfound);
     bot.config.notfound = false;
   });
