@@ -78,9 +78,8 @@ export default bot => {
      */
     find(key, conditions) {
       const Model = db.model(key);
-      const Collection = db.collection(Model.collection);
 
-      return Collection.find(conditions);
+      return Model.find(conditions);
     },
 
     /**
@@ -92,9 +91,8 @@ export default bot => {
      */
     where(key, property) {
       const Model = db.model(key);
-      const Collection = db.collection(Model.collection);
 
-      return Collection.where(property);
+      return Model.where(property);
     },
 
     /**
