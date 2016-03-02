@@ -3,7 +3,7 @@ import _ from 'lodash';
 export default bot => {
   bot.on('notfound', message => {
     if (bot.config.notfound === false) return;
-    if (!message.mention) return;
+    if (!message.mention || !message.channel.startsWith('D')) return;
 
     const exclude = _.get(bot.config, 'notfound.exclude') || [];
     const ch = bot.find(message.channel);
