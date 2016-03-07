@@ -67,6 +67,14 @@ const fullText = blessed.box({
   alwaysScroll: true
 });
 
+const del = blessed.button({
+  ...input(),
+  bottom: 3,
+  left: 0,
+  content: 'delete',
+  align: 'center'
+});
+
 const button = blessed.button({
   ...input(),
   bottom: 0,
@@ -78,6 +86,7 @@ const button = blessed.button({
 actions.hide();
 actions.append(reaction);
 actions.append(fullText);
+actions.append(del);
 actions.append(button);
 
 button.on('press', () => {
@@ -98,6 +107,12 @@ let messagelist = [];
 let userlist = [];
 let currentChannel = null;
 let currentMessage = null;
+
+del.on('press', () => {
+  client.send('delete', currentMessage);
+  actions.hide();
+  messages.focus();
+});
 
 const showMessages = () => {
   const list = messagelist
@@ -145,6 +160,7 @@ messages.on('select', (selected) => {
   const ts = /<([^>]+)>/i.exec(selected.content)[1];
   currentMessage = messagelist.find(a => a.ts === ts);
   actions.show();
+  actions.focus();
   fullText.content = currentMessage.text;
 });
 

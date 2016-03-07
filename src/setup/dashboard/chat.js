@@ -60,4 +60,8 @@ export default (bot, { client, server }) => {
       bot.react(msg.channel, msg.ts, emoji);
     });
   });
+
+  server.on('delete', async (message, data) => {
+    await bot.deleteMessage(data.channel, data.ts);
+  });
 };
