@@ -49,7 +49,8 @@ form.append(button);
 
 const DEFAULTS = {
   websocket: false,
-  parse: 'full'
+  parse: 'full',
+  link_names: true
 };
 
 form.on('submit', () => {
