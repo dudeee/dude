@@ -33,6 +33,23 @@ export function compare(format, value) {
          value >= fmt.gte && value <= fmt.lte;
 }
 
+/**
+ * Promisify a callback-style function
+ * @param  {Function} fn    the function to modify
+ * @param  {Object} context the context to run the function with
+ * @return {Function}    the same function, returning Promise instead of accepting callback
+ */
+export function promisify(fn, context = null) {
+  return function(...args) { // eslint-disable-line
+    return new Promise((resolve, reject) => {
+      fn.call(context, ...args, function promisifiedCallback(e, ...rest) { // eslint-disable-line
+        if (e) reject(e);
+        else resolve(...rest);
+      });
+    });
+  };
+}
+
 export const emojify = a => `:${a}:`;
 
 export const numbers = ['zero', 'one', 'two', 'three', 'four', 'five',

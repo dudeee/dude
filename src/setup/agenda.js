@@ -1,13 +1,20 @@
 import Agenda from 'agenda';
+import _ from 'lodash';
 
 export default async bot => {
-  await (new Promise(resolve =>
+  await (new Promise((resolve, reject) => {
     bot.agenda = new Agenda({
+      mongo: _.get(bot.config, 'agenda.mongo'),
       db: {
         address: process.env.MONGOLAB_URI || 'mongodb://127.0.0.1/agenda'
       }
-    }, resolve)
-  ));
+    }, resolve);
+
+    bot.agenda.on('error', e => {
+      console.error('agenda error', e);
+      reject(e);
+    });
+  }));
 
   bot.agenda.start();
   bot.agenda.purge(() => 0);

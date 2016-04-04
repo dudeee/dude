@@ -1,6 +1,6 @@
 {
   "name": "slack-bolt",
-  "version": "1.15.1",
+  "version": "1.15.2",
   "description": "",
   "main": "build/index.js",
   "bin": {
@@ -13,7 +13,7 @@
   },
   "config": {
     "ghooks": {
-      "pre-commit": "npm run lint"
+      "pre-commit": "grunt; npm run lint"
     }
   },
   "repository": {

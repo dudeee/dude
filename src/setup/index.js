@@ -1,6 +1,6 @@
 import path from 'path';
 
-const files = ['i18n', 'log', 'messenger', 'help', 'agenda', 'pocket', 'ask', 'command']
+const files = ['i18n', 'log', 'messenger', 'help', 'agenda', 'pocket', 'ask', 'command', 'stop']
 .map(file =>
   path.resolve(__dirname, `${file}.js`)
 );
