@@ -1,6 +1,6 @@
 {
   "name": "slack-bolt",
-  "version": "1.16.0",
+  "version": "1.16.1",
   "description": "",
   "main": "build/index.js",
   "bin": {
@@ -27,7 +27,8 @@
     "url": "https://github.com/mdibaiee/bolt/issues"
   },
   "files": [
-    "build"
+    "build",
+    "locales"
   ],
   "directories": {
     "lib": "lib"
