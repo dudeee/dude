@@ -1,6 +1,6 @@
 {
   "name": "slack-bolt",
-  "version": "1.15.2",
+  "version": "1.16.0",
   "description": "",
   "main": "build/index.js",
   "bin": {
@@ -48,6 +48,7 @@
     "lodash": "3.10.1",
     "messenger": "0.0.9",
     "mongoose": "4.2.3",
+    "node-schedule": "1.1.0",
     "slackbot-api": ">=1.5.7",
     "winston": "2.1.0"
   },
