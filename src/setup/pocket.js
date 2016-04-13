@@ -29,6 +29,10 @@ export default bot => {
      * @return {Model}         Mongoose Model
      */
     model(key, schema) {
+      if (!schema) {
+        return db.model(key);
+      }
+
       schema = new mongoose.Schema(schema);
 
       const Model = db.model(key, schema);
