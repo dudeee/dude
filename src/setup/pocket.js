@@ -1,6 +1,7 @@
 import levelup from 'levelup';
 import _ from 'lodash';
 import { promisify } from '../utils';
+import path from 'path';
 
 /**
  * Bot Pocket: a storage for plugins / bot
@@ -10,7 +11,8 @@ import { promisify } from '../utils';
 
 export default bot => {
   const database = _.get(bot.config, 'database') || {};
-  bot.pocket = levelup(database.name || './database', {
+  const addr = path.join(__dirname, './database');
+  bot.pocket = levelup(database.path || addr, {
     valueEncoding: 'json',
     ...database
   });
