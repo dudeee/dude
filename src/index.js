@@ -16,7 +16,9 @@ const initialize = (config, ...rest) => {
     bot.utils = utils;
 
     try {
+      // setup: internal configuration and initialization process
       await setup(bot);
+      // load: external plugins and tasks in the `tasks` folder
       await loader(bot);
     } catch (e) {
       console.error('[setup] error', e, e.stack);
@@ -27,6 +29,7 @@ const initialize = (config, ...rest) => {
     bot.log.info(bot.t('main.ready'));
   });
 
+  // works out of box on heroku-like servers
   if (process.env.PORT) {
     bot._fake = require('http').createServer().listen(process.env.PORT);
     bot._fake.on('error', () => {}); // eslint-disable-line

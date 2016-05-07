@@ -4,8 +4,8 @@ export default bot => {
   bot.ask = async (channel, question, options, params) => {
     if (options === Boolean) {
       const reply = `${question}\n` +
-                    `:white_check_mark: Yes\n` +
-                    `:negative_squared_cross_mark: No`;
+                    ':white_check_mark: Yes\n' +
+                    ':negative_squared_cross_mark: No';
 
       const message = await bot.sendMessage(channel, reply, params);
 

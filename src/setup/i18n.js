@@ -17,7 +17,10 @@ export default async bot =>
           jsonIndent: 2
         }
       }, (err) => {
-        if (err) return reject(err);
+        if (err) {
+          reject(err);
+          return;
+        }
 
         const keys = /%([^%]+)%/gi;
         bot.t = (key, substitutions = {}) =>

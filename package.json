@@ -1,6 +1,6 @@
 {
   "name": "slack-bolt",
-  "version": "1.17.4",
+  "version": "1.17.5",
   "description": "",
   "main": "build/index.js",
   "bin": {
@@ -13,7 +13,7 @@
   },
   "config": {
     "ghooks": {
-      "pre-commit": "grunt; npm run lint"
+      "pre-commit": "grunt;"
     }
   },
   "repository": {
@@ -57,7 +57,7 @@
   },
   "devDependencies": {
     "babel": "5.8.3",
-    "babel-eslint": "4.1.6",
+    "babel-eslint": "4.1.8",
     "eslint": "1.10.3",
     "eslint-config-airbnb": "4.0.0",
     "ghooks": "1.0.3",
