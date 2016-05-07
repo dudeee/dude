@@ -2,6 +2,7 @@ import i18next from 'i18next';
 import Backend from 'i18next-node-fs-backend';
 import path from 'path';
 import fs from 'fs-promise';
+import _ from 'lodash';
 
 export default async bot =>
   new Promise((resolve, reject) => {
@@ -20,7 +21,7 @@ export default async bot =>
 
         const keys = /%([^%]+)%/gi;
         bot.t = (key, substitutions = {}) =>
-          i18next.t(key).replace(keys, (match, name) => substitutions[name] || '');
+          i18next.t(key).replace(keys, (match, name) => _.get(substitutions, name, ''));
 
         bot.i18n = i18next;
         bot.i18n.load = async localesPath => {
