@@ -1,6 +1,6 @@
 {
   "name": "slack-bolt",
-  "version": "1.17.6",
+  "version": "1.17.7",
   "description": "",
   "main": "build/index.js",
   "bin": {
@@ -52,7 +52,7 @@
     "messenger": "0.0.9",
     "moment": "2.12.0",
     "node-schedule": "1.1.0",
-    "slackbot-api": "1.10.0",
+    "slackbot-api": "1.11.0",
     "winston": "2.1.0"
   },
   "devDependencies": {

@@ -42,14 +42,14 @@ export default (bot, { client, server }) => {
     const msg = data.message;
     const emojis = data.emojis;
 
-    const response = await bot.call('reactions.get', {
+    const response = await bot.api.reactions.get({
       channel: msg.channel,
       timestamp: msg.ts
     });
     const reactions = response.message.reactions || [];
 
     reactions.forEach(async reaction => {
-      await bot.call('reactions.remove', {
+      await bot.api.reactions.remove({
         channel: msg.channel,
         timestamp: msg.ts,
         name: reaction.name
