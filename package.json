@@ -1,10 +1,10 @@
 {
-  "name": "slack-bolt",
-  "version": "1.17.7",
+  "name": "dudeee",
+  "version": "1.17.9",
   "description": "",
   "main": "build/index.js",
   "bin": {
-    "bolt": "build/dashboard/index.js"
+    "dude": "build/dashboard/index.js"
   },
   "scripts": {
     "start": "node build/index",
@@ -18,13 +18,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/mdibaiee/bolt"
+    "url": "https://github.com/mdibaiee/dude"
   },
   "keywords": [],
   "author": "Mahdi Dibaiee",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/mdibaiee/bolt/issues"
+    "url": "https://github.com/mdibaiee/dude/issues"
   },
   "files": [
     "build",
@@ -36,7 +36,7 @@
   "engines": {
     "node": "4.0.0"
   },
-  "homepage": "https://github.com/mdibaiee/bolt",
+  "homepage": "https://github.com/mdibaiee/dude",
   "dependencies": {
     "agenda": "0.7.2",
     "babel": "5.8.3",
