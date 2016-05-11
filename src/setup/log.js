@@ -11,7 +11,7 @@ export default bot => {
 
   eventLogger(bot, winston);
   const transports = [new (winston.transports.Event)()];
-  if (bot.config.log.file) transports.push(new (winston.transports.File)({ filename: 'bolt.log' }));
+  if (bot.config.log.file) transports.push(new (winston.transports.File)({ filename: 'dude.log' }));
   if (bot.config.log.console) transports.push(new (winston.transports.Console)());
 
   bot.log = new (winston.Logger)({ transports });

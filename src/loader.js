@@ -4,7 +4,7 @@ import path from 'path';
 const modulesPath = path.resolve(__dirname, '../node_modules');
 const modules = fs.readdirSync(modulesPath)
 .filter(module =>
-  module.startsWith('bolt-')
+  module.startsWith('dude-')
 ).map(module =>
   path.resolve(modulesPath, module)
 );

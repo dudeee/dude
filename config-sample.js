@@ -1,7 +1,7 @@
 module.exports = {
-  token: process.env.BOLT_SLACK_TOKEN,
+  token: process.env.dude_SLACK_TOKEN,
   log: {
-    level: process.env.BOLT_LOG_LEVEL,
+    level: process.env.dude_LOG_LEVEL,
     console: true,
     file: false
   }

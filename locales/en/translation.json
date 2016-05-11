@@ -1,6 +1,6 @@
 {
   "main": {
-    "ready": "Bolt is ready to work!"
+    "ready": "dude is ready to work!"
   },
   "loader": {
     "error": "error loading %s: %s"

@@ -1,5 +1,6 @@
-Bolt
+Dude
 ====
+![Dude's Avatar](https://raw.githubusercontent.com/dudeee/dude/master/avatar.png)
 
 Your team's friendly assistant.
 
@@ -7,14 +8,14 @@ Setup a slack bot in seconds, use plugins to extend it's functionality without a
 
 #Setup
 ```
-git clone git@github.com:slack-bolt/bolt
-git clone https://github.com/slack-bolt/bolt
+git clone git@github.com:dudeee/dude
+git clone https://github.com/dudeee/dude
 ```
 
 Set environment variables
 ```
 // grab a token from your team's slack page -> services -> custom integrations -> bots
-export BOLT_SLACK_TOKEN='YOUR_SLACK_API_TOKEN';
+export dude_SLACK_TOKEN='YOUR_SLACK_API_TOKEN';
 ```
 
 #Start
@@ -26,15 +27,15 @@ npm start
 Plugins are easily installed using npm:
 
 ```
-npm install bolt-permissions
+npm install dude-permissions
 ```
 
-Find more plugins at the organization's repository: https://github.com/slack-bolt
+Find more plugins at the organization's repository: https://github.com/dudeee
 
 #Configure
 Logging:
 ```
-export BOLT_LOG_LEVEL='verbose'; // silly, debug, verbose, info, warn, error
+export dude_LOG_LEVEL='verbose'; // silly, debug, verbose, info, warn, error
 ```
 
 Configure plugins, initialize, etc.
@@ -75,7 +76,7 @@ export default bot => {
 ```
 
 In order to create plugins as separate modules, create a module with a name prefix
-of `bolt-`, e.g. `bolt-permission`.
+of `dude-`, e.g. `dude-permission`.
 
 #API
 See [slackbot-api](https://github.com/mdibaiee/slackbot-api) for more information

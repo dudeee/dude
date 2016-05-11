@@ -1,1 +1,1 @@
-bolt: npm start
+dude: npm start
