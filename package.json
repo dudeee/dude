@@ -1,6 +1,6 @@
 {
   "name": "dudeee",
-  "version": "1.18.1",
+  "version": "1.18.2",
   "description": "",
   "main": "build/index.js",
   "bin": {
@@ -57,7 +57,7 @@
     "messenger": "0.0.9",
     "moment": "2.12.0",
     "node-schedule": "1.1.0",
-    "slackbot-api": "1.11.0",
+    "slackbot-api": "1.11.2",
     "winston": "2.1.0"
   },
   "devDependencies": {
@@ -72,6 +72,7 @@
     "grunt-babel": "5.0.3",
     "grunt-contrib-clean": "0.7.0",
     "grunt-contrib-watch": "0.6.1",
+    "istanbul": "0.4.3",
     "ws": "1.1.0"
   }
 }
