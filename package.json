@@ -1,6 +1,6 @@
 {
   "name": "dudeee",
-  "version": "1.18.2",
+  "version": "1.18.3",
   "description": "",
   "main": "build/index.js",
   "bin": {
@@ -73,6 +73,7 @@
     "grunt-contrib-clean": "0.7.0",
     "grunt-contrib-watch": "0.6.1",
     "istanbul": "0.4.3",
+    "mocha": "2.4.5",
     "ws": "1.1.0"
   }
 }
