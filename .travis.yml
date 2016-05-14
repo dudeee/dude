@@ -1,3 +1,4 @@
+before_install: npm install -g grunt-cli
 before_script:
   - npm prune
   - npm install
