@@ -9,6 +9,9 @@ export default bot => {
 
       const message = await bot.sendMessage(channel, reply, params);
 
+      await message.react('white_check_mark');
+      await message.react('negative_squared_cross_mark');
+
       return new Promise((resolve) => {
         message.on('reaction_added', response => {
           const { reaction } = response;
@@ -26,6 +29,7 @@ export default bot => {
     const reply = `${question}\n${list}`;
 
     const message = await bot.sendMessage(channel, reply, params);
+    await Promise.all(options.map((o, i) => message.react(numbers[i])));
 
     return new Promise((resolve) => {
       message.on('reaction_added', response => {

@@ -8,14 +8,22 @@ module.exports = function(grunt) {
           src: '**/*.js',
           dest: 'build/'
         }]
+      },
+      test: {
+        files: [{
+          expand: true,
+          cwd: 'test',
+          src: '**/*.js',
+          dest: 'test-build'
+        }]
       }
     },
     clean: {
-      files: ['build/**/*.js']
+      files: ['build/**/*.js', 'test-build/**/*.js']
     },
     watch: {
       scripts: {
-        files: ['src/**/*.js', 'server/**/*.js'],
+        files: ['src/**/*.js', 'server/**/*.js', 'test/**/*.js'],
         tasks: ['clean', 'babel']
       }
     }

@@ -1,4 +1,5 @@
 deploy.sh
+test-build
 playground.js
 config.js
 ecosystem.json

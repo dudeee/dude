@@ -8,26 +8,19 @@ import * as utils from './utils';
 
 let bot;
 
-const initialize = (config, ...rest) => {
-  bot = new Bot(config, ...rest);
+const initialize = async (config = {}, manual, ...rest) => {
+  bot = new Bot(config, manual, ...rest);
+  bot.config = config;
+  bot.utils = utils;
 
-  bot.on('open', async () => {
-    bot.config = config;
-    bot.utils = utils;
-
-    try {
-      // setup: internal configuration and initialization process
-      await setup(bot);
-      // load: external plugins and tasks in the `tasks` folder
-      await loader(bot);
-    } catch (e) {
-      console.error('[setup] error', e, e.stack);
-    }
-
-    bot.emit('ready');
-
-    bot.log.info(bot.t('main.ready'));
-  });
+  try {
+    // setup: internal configuration and initialization process
+    await setup(bot);
+    // load: external plugins and tasks in the `tasks` folder
+    await loader(bot, manual);
+  } catch (e) {
+    console.error('[setup] error', e, e.stack);
+  }
 
   // works out of box on heroku-like servers
   if (process.env.PORT) {
@@ -35,7 +28,18 @@ const initialize = (config, ...rest) => {
     bot._fake.on('error', () => {}); // eslint-disable-line
   }
 
-  return bot;
+  if (manual) {
+    bot.emit('ready');
+    bot.log.info(bot.t('main.ready'));
+
+    return bot;
+  }
+
+  return new Promise(resolve => {
+    bot.on('open', async () => {
+      resolve(bot);
+    });
+  });
 };
 
 

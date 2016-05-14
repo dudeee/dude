@@ -1,4 +1,3 @@
-
 export default (bot, { client }) => {
   const INTERVAL = 1000;
 
