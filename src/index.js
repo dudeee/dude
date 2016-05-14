@@ -19,7 +19,7 @@ const initialize = async (config = {}, manual, ...rest) => {
     // load: external plugins and tasks in the `tasks` folder
     await loader(bot, manual);
   } catch (e) {
-    console.error('[setup] error', e, e.stack);
+    console.error('[setup, loader] error', e, e.stack);
   }
 
   // works out of box on heroku-like servers
