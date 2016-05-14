@@ -25,6 +25,7 @@ export default async (bot, manual) => {
       bot.log.debug('[loader] require(%s)(bot)', file);
       rq(bot);
     } catch (e) {
+      console.error(file, e, e.stack);
       bot.log.error('[loader]', bot.t('loader.error'), '%s: %s', file, e);
     }
   }
