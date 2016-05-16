@@ -1,7 +1,7 @@
 import express from 'express';
+import dude from '../build/index';
 import WebSocket from 'ws';
 import bodyParser from 'body-parser';
-import init from '../build/index';
 import slack from './fixtures';
 
 let instances;
@@ -12,6 +12,17 @@ export default async function initialize() {
   app.use(bodyParser.json());
   app.use(bodyParser.urlencoded({ extended: true }));
   const server = app.listen(9091);
+
+  const bot = dude({
+    log: {
+      level: 'silly'
+    },
+    teamline: {
+      actionsChannel: false,
+      teamsChannels: false,
+      uri: 'http://127.0.0.1:9091'
+    },
+  }, true);
 
   ws._events = {};
 
@@ -29,7 +40,6 @@ export default async function initialize() {
     });
   });
 
-  const bot = await init({}, true);
   bot.connect('ws://127.0.0.1:9090');
   bot._api = 'http://127.0.0.1:9091/';
 
@@ -38,7 +48,7 @@ export default async function initialize() {
   Object.assign(bot, slack);
 
   return new Promise(resolve => {
-    bot.on('open', () => {
+    bot.on('ready', () => {
       instances = {
         server, uri, bot, app, socket, ws
       };
