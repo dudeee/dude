@@ -2,7 +2,9 @@ import fs from 'fs';
 import path from 'path';
 
 export default async (bot, manual) => {
-  const modulesPath = path.resolve(__dirname, '../node_modules');
+  const parent = path.resolve(__dirname, '../..');
+  const modulesPath = parent.endsWith('node_modules') ? parent
+                                                      : path.resolve(__dirname, '../node_modules');
   const modules = fs.readdirSync(modulesPath)
   .filter(module =>
     module.startsWith('dude-')
