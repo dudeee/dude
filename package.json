@@ -1,6 +1,6 @@
 {
   "name": "dudeee",
-  "version": "1.18.9",
+  "version": "1.18.10",
   "description": "",
   "main": "build/index.js",
   "bin": {
@@ -57,7 +57,7 @@
     "messenger": "0.0.9",
     "moment": "2.12.0",
     "node-schedule": "1.1.0",
-    "slackbot-api": "1.11.2",
+    "slackbot-api": "1.11.3",
     "winston": "2.1.0"
   },
   "devDependencies": {
