@@ -82,7 +82,7 @@ describe('ask', function help() {
     bot.ask('general', 'Hey', Boolean);
   });
 
-  it('should return the answer index and emoji', async () => {
+  it('should return the answer index and emoji', async done => {
     const options = ['first', 'second', 'third'];
 
     let i = 0;
@@ -130,6 +130,7 @@ describe('ask', function help() {
 
     expect(index).to.equal(0);
     expect(answer).to.equal(options[0]);
+    done();
   });
 
   it('should return true/false (Boolean)', async () => {
