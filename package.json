@@ -1,6 +1,6 @@
 {
   "name": "dudeee",
-  "version": "1.18.11",
+  "version": "1.18.12",
   "description": "",
   "main": "build/index.js",
   "bin": {
@@ -9,7 +9,7 @@
   "scripts": {
     "start": "node build/index",
     "test": "grunt babel:test && mocha test --compilers js:babel/polyfill -w",
-    "test:single": "istanbul cover -x 'build/dashboard/**' -x 'build/setup/dashboard/**' -x test-build _mocha -- test-build --compilers js:babel/polyfill",
+    "test:single": "istanbul cover -x 'build/dashboard/**' -x test-build _mocha -- test-build --compilers js:babel/polyfill",
     "test:file": "mocha --compilers js:babel/register,js:babel/polyfill",
     "check-coverage": "istanbul check-coverage --statements 85 --branches 60 --functions 85 --lines 85",
     "report-coverage": "cat ./coverage/lcov.info | codecov",
