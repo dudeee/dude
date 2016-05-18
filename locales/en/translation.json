@@ -9,9 +9,13 @@
     "greetings": {
       "0": "Hello buddy!",
       "1": "Hey!",
-      "2": "Hi"
+      "2": "Hi",
+      "input": "Hi|Hello|Hey|Yo"
     },
-    "not-understood": "I couldn't understand what you're trying to do. Maybe you misspelled a command.",
+    "not-understood": "I couldn't understand what you're trying to do. Try `help` :v:",
     "empty": "Couldn't find anything to show. 😶"
+  },
+  "help": {
+    "detailed": "For detailed information about each command, try %syntax%"
   }
 }

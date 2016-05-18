@@ -9,7 +9,7 @@ export default bot => {
         return `${key} — ${description}`;
       }).join('\n');
 
-      all += '\nFor detailed information about each command, try `help [command]`';
+      all += '\n' + bot.t('help.detailed', { syntax: '`help [command]`' }); // eslint-disable-line
 
       message.reply(all);
       return;
