@@ -5,7 +5,7 @@ export default (bot, { client }) => {
   const memory = {
     title: 'rss',
     x: [0, 0, 0, 0, 0],
-    y: [0, 0, 0, 0, 0]
+    y: [0, 0, 0, 0, 0],
   };
   setInterval(() => {
     memory.x.shift();

@@ -1,11 +1,5 @@
 {
-  "parser": "babel-eslint",
-  "extends": "airbnb/base",
-  "rules": {
-    "comma-dangle": 0,
-    "no-param-reassign": 0,
-    "no-console": 0
-  },
+  "extends": "pichak",
   "env": {
     "mocha": true
   }

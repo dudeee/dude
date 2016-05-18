@@ -9,17 +9,17 @@ export default () => cloneDeep({
   inputOnFocus: true,
 
   border: {
-    type: 'line'
+    type: 'line',
   },
 
   style: {
     border: {
-      fg: 'gray'
+      fg: 'gray',
     },
     focus: {
       border: {
-        fg: 'blue'
-      }
-    }
-  }
+        fg: 'blue',
+      },
+    },
+  },
 });

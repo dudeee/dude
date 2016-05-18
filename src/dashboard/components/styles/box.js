@@ -17,27 +17,27 @@ export default () => cloneDeep({
   input: true,
 
   border: {
-    type: 'line'
+    type: 'line',
   },
 
   style: {
     border: {
-      fg: 'gray'
+      fg: 'gray',
     },
 
     scrollbar: {
-      bg: 'blue'
+      bg: 'blue',
     },
 
     focus: {
       border: {
-        fg: 'blue'
-      }
+        fg: 'blue',
+      },
     },
 
     selected: {
       bg: 'cyan',
-      fg: 'black'
-    }
-  }
+      fg: 'black',
+    },
+  },
 });

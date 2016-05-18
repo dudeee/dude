@@ -6,7 +6,7 @@ export default (bot, { client }) => {
   // CPU STATS
   const data = {
     titles: [],
-    data: []
+    data: [],
   };
 
   setInterval(() => {

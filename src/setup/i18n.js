@@ -14,8 +14,8 @@ export default async bot =>
         backend: {
           loadPath: path.join(__dirname, '../../locales/{{lng}}/{{ns}}.json'),
           addPath: path.join(__dirname, '../../locales/{{lng}}/{{ns}}.missing.json'),
-          jsonIndent: 2
-        }
+          jsonIndent: 2,
+        },
       }, (err) => {
         if (err) {
           reject(err);

@@ -7,18 +7,18 @@ export default (bot, { client }) => {
     x: [0, 0, 0, 0, 0],
     y: [0, 0, 0, 0, 0],
     style: {
-      line: 'red'
+      line: 'red',
     },
-    count: 0
+    count: 0,
   };
   const rejections = {
     title: 'rejections',
     x: [0, 0, 0, 0, 0],
     y: [0, 0, 0, 0, 0],
     style: {
-      line: 'yellow'
+      line: 'yellow',
     },
-    count: 0
+    count: 0,
   };
 
   process.on('uncaughtException', () => exceptions.count++);

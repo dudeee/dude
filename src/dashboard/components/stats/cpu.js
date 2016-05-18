@@ -9,7 +9,7 @@ const bar = contrib.bar({
   height: '50%-1',
   width: '50%-1',
   left: '50%',
-  maxHeight: 100
+  maxHeight: 100,
 });
 
 server.on('cpu', (message, data) => {

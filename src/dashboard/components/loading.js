@@ -7,7 +7,7 @@ const loading = blessed.loading({
   height: 'shrink',
   top: 'center',
   left: 'center',
-  align: 'center'
+  align: 'center',
 });
 
 export default loading;

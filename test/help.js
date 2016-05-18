@@ -39,7 +39,7 @@ describe('help', function help() {
 
     bot.inject('message', {
       text: 'help',
-      mention: true
+      mention: true,
     });
   });
 
@@ -56,7 +56,7 @@ describe('help', function help() {
 
     bot.inject('message', {
       text: 'help yoyo',
-      mention: true
+      mention: true,
     });
   });
 });

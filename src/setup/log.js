@@ -6,7 +6,7 @@ export default bot => {
     file: true,
     console: !module.parent.parent.parent,
 
-    ...bot.config.log
+    ...bot.config.log,
   };
 
   eventLogger(bot, winston);

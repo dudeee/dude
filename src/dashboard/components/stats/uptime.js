@@ -8,8 +8,8 @@ const uptime = blessed.box({
   height: 1,
   width: 'shrink',
   style: {
-    fg: 'yellow'
-  }
+    fg: 'yellow',
+  },
 });
 
 server.on('uptime', (message, data) => {

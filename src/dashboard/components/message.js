@@ -6,7 +6,7 @@ import { client } from '../messenger';
 
 const form = blessed.form({
   ...box(),
-  label: 'message'
+  label: 'message',
 });
 
 const channel = blessed.textbox({
@@ -22,7 +22,7 @@ const text = blessed.textarea({
   left: 0,
   height: form.height - channel.height - 5,
   width: '80%',
-  label: 'content'
+  label: 'content',
 });
 
 const options = blessed.textarea({
@@ -31,7 +31,7 @@ const options = blessed.textarea({
   left: '80%',
   height: form.height - channel.height - 5,
   width: '20%-1',
-  label: 'options'
+  label: 'options',
 });
 
 const button = blessed.button({
@@ -50,7 +50,7 @@ form.append(button);
 const DEFAULTS = {
   websocket: false,
   parse: 'full',
-  link_names: true
+  link_names: true,
 };
 
 form.on('submit', () => {

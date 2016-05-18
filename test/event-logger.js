@@ -12,11 +12,11 @@ describe('event-logger', () => {
     const expected = [{
       level: 'info',
       message: 'hi',
-      meta: {}
+      meta: {},
     }, {
       level: 'error',
       message: 'hey',
-      meta: { test: 1 }
+      meta: { test: 1 },
     }];
 
     let i = 0;

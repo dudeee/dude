@@ -13,25 +13,25 @@ export default blessed.listbar({
       keys: 'l',
       callback() {
         screen.emit('route', 'log');
-      }
+      },
     },
     stats: {
       keys: 's',
       callback() {
         screen.emit('route', 'stats');
-      }
+      },
     },
     message: {
       keys: 'm',
       callback() {
         screen.emit('route', 'message');
-      }
+      },
     },
     chat: {
       keys: 'c',
       callback() {
         screen.emit('route', 'chat');
-      }
+      },
     },
     quit: {
       keys: 'q',
@@ -39,7 +39,7 @@ export default blessed.listbar({
         client.request('quit', {}, () => {
           process.exit(0);
         });
-      }
-    }
-  }
+      },
+    },
+  },
 });

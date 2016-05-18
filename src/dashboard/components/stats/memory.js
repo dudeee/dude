@@ -11,7 +11,7 @@ const line = contrib.line({
   wholeNumbersOnly: true,
   label: 'memory usage',
   width: '50%-1',
-  height: '50%-1'
+  height: '50%-1',
 });
 
 server.on('memory', (message, data) => {

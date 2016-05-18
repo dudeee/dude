@@ -8,8 +8,8 @@ export default {
       last_name: 'Test',
       email: 'test@test.com',
       phone: '919999999',
-      image_48: 'some_image_48.png'
-    }
+      image_48: 'some_image_48.png',
+    },
   }, {
     id: 'U234567',
     name: 'someone',
@@ -18,8 +18,8 @@ export default {
       first_name: 'Mr',
       last_name: 'Test',
       email: 'test@test.com',
-      phone: '919999999'
-    }
+      phone: '919999999',
+    },
   }, {
     id: 'U345678',
     name: 'the guy',
@@ -28,22 +28,22 @@ export default {
       first_name: 'The Great',
       last_name: 'Cyrus',
       email: 'cyrus@test.com',
-      phone: '918999999'
-    }
+      phone: '918999999',
+    },
   }],
 
   channels: [{
     id: 'C987654',
-    name: 'general'
+    name: 'general',
   }, {
     id: 'C123456',
-    name: 'some-team'
+    name: 'some-team',
   }, {
     id: 'C123457',
-    name: 'actions'
+    name: 'actions',
   }, {
     id: 'C123458',
-    name: 'schedules'
+    name: 'schedules',
   }],
 
   ims: [],
@@ -52,6 +52,6 @@ export default {
 
   self: {
     name: 'bot',
-    profile: {}
-  }
+    profile: {},
+  },
 };

@@ -14,7 +14,7 @@ export default bot => {
   const addr = path.join(__dirname, './database');
   bot.pocket = levelup(database.path || addr, {
     valueEncoding: 'json',
-    ...database
+    ...database,
   });
   bot.pocket.get = promisify(bot.pocket.get, bot.pocket);
   bot.pocket.put = promisify(bot.pocket.put, bot.pocket);

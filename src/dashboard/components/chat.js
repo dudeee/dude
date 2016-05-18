@@ -8,7 +8,7 @@ const chat = blessed.form({
   ...box(),
   label: 'chat',
   keys: false,
-  vi: false
+  vi: false,
 });
 
 const channels = blessed.list({
@@ -37,7 +37,7 @@ const messageinput = blessed.textbox({
   ...input(),
   bottom: 0,
   left: '20%',
-  width: '80%-1'
+  width: '80%-1',
 });
 
 const actions = blessed.form({
@@ -46,14 +46,14 @@ const actions = blessed.form({
   height: '100%-2',
   top: 0,
   left: '20%',
-  label: 'actions'
+  label: 'actions',
 });
 
 const reaction = blessed.textbox({
   ...input(),
   top: 0,
   left: 0,
-  label: 'reaction'
+  label: 'reaction',
 });
 
 const fullText = blessed.box({
@@ -64,7 +64,7 @@ const fullText = blessed.box({
   width: null,
   label: 'full text',
   scrollable: true,
-  alwaysScroll: true
+  alwaysScroll: true,
 });
 
 const del = blessed.button({
@@ -72,7 +72,7 @@ const del = blessed.button({
   bottom: 3,
   left: 0,
   content: 'delete',
-  align: 'center'
+  align: 'center',
 });
 
 const button = blessed.button({
@@ -196,7 +196,7 @@ setInterval(update, INTERVAL);
 
 const DEFAULTS = {
   websocket: false,
-  parse: 'full'
+  parse: 'full',
 };
 
 messageinput.key('enter', () => {

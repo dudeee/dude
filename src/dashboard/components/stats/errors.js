@@ -12,7 +12,7 @@ const errors = contrib.line({
   label: 'errors',
   width: '50%-1',
   height: '50%-1',
-  top: '50%-1'
+  top: '50%-1',
 });
 
 server.on('errors', (message, data) => {

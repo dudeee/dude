@@ -9,7 +9,7 @@ import uptime from './stats/uptime';
 const wrapper = blessed.box({
   ...box(),
   label: 'stats',
-  focusable: true
+  focusable: true,
 });
 
 wrapper.append(memory);

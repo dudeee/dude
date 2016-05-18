@@ -44,7 +44,7 @@ export default (bot, { client, server }) => {
 
     const response = await bot.api.reactions.get({
       channel: msg.channel,
-      timestamp: msg.ts
+      timestamp: msg.ts,
     });
     const reactions = response.message.reactions || [];
 
@@ -52,7 +52,7 @@ export default (bot, { client, server }) => {
       await bot.api.reactions.remove({
         channel: msg.channel,
         timestamp: msg.ts,
-        name: reaction.name
+        name: reaction.name,
       });
     });
 

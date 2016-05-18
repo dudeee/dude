@@ -37,7 +37,7 @@ describe('ask', function help() {
 
       response.json({
         ok: true,
-        ...request.query
+        ...request.query,
       });
 
       if (i === options.length) {
@@ -70,7 +70,7 @@ describe('ask', function help() {
 
       response.json({
         ok: true,
-        ...request.query
+        ...request.query,
       });
 
       if (i === options.length) {
@@ -91,7 +91,7 @@ describe('ask', function help() {
 
       response.json({
         ok: true,
-        ...request.query
+        ...request.query,
       });
 
       if (i === options.length) {
@@ -110,16 +110,16 @@ describe('ask', function help() {
       response.json({
         ok: true,
         ts: '123',
-        ...request.query
+        ...request.query,
       });
 
       setTimeout(() => {
         bot.inject('reaction_added', {
           item: {
             ts: '123',
-            channel: bot.find('general').id
+            channel: bot.find('general').id,
           },
-          reaction: 'zero'
+          reaction: 'zero',
         });
       }, 10);
 
@@ -141,7 +141,7 @@ describe('ask', function help() {
     app.get('/reactions.add', (request, response) => {
       response.json({
         ok: true,
-        ...request.query
+        ...request.query,
       });
 
       i++;
@@ -152,9 +152,9 @@ describe('ask', function help() {
           bot.inject('reaction_added', {
             item: {
               ts: j,
-              channel: bot.find('general').id
+              channel: bot.find('general').id,
             },
-            reaction: answers[j++]
+            reaction: answers[j++],
           });
         }, 10);
 
@@ -171,7 +171,7 @@ describe('ask', function help() {
       response.json({
         ok: true,
         ts: j,
-        ...request.query
+        ...request.query,
       });
 
       if (j === answers.length) {
