@@ -5,6 +5,7 @@ import contrib from 'blessed-contrib'; //eslint-disable-line
 import screen from './screen';
 import log from './components/log';
 import message from './components/message';
+import inject from './components/inject';
 import menu from './components/menu';
 // import loading from './components/loading';
 import chat from './components/chat';
@@ -12,6 +13,7 @@ import stats from './components/stats';
 import { client } from './messenger';
 
 screen.append(message);
+screen.append(inject);
 screen.append(log);
 screen.append(stats);
 screen.append(chat);

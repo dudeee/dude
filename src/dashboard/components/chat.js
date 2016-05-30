@@ -181,7 +181,7 @@ const update = () => {
 
         return ch;
       });
-      const name = (ch) => (ch.isChannel ? `#${ch.name}` : `@${ch.user.name}`);
+      const name = (ch) => (ch.isChannel ? `#${ch.name}` : `@${ch.user.name}`) + ` (${ch.id})`;
       const names = list.map(name);
       channels.setItems(names);
       if (!currentChannel) currentChannel = names[0];
@@ -216,7 +216,9 @@ server.on('message', (message, data) => {
   } else {
     const channel = channellist.findIndex(a => a.id === data.channel);
     const ch = channels.getItem(channel);
-    ch.style.fg = 'red';
+    if (ch) {
+      ch.style.fg = 'red';
+    }
   }
 
   screen.render();

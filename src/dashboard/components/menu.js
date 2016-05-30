@@ -33,6 +33,12 @@ export default blessed.listbar({
         screen.emit('route', 'chat');
       },
     },
+    inject: {
+      keys: 'i',
+      callback() {
+        screen.emit('route', 'inject');
+      },
+    },
     quit: {
       keys: 'q',
       callback() {
