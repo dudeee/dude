@@ -141,7 +141,8 @@ actions.key('escape', () => {
 });
 
 channels.on('select', (selected) => {
-  const name = selected.content.slice(1);
+  const name = selected.content.slice(1, selected.content.indexOf('(') - 1);
+
   currentChannel = channellist.find(a => a.name === name || (a.user && a.user.name === name));
   if (selected.style.fg === 'red') selected.style.fg = null;
 
