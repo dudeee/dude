@@ -141,7 +141,7 @@ actions.key('escape', () => {
 });
 
 channels.on('select', (selected) => {
-  const name = selected.content.slice(1, selected.content.indexOf('(') - 1);
+  const name = selected.content.slice(1);
 
   currentChannel = channellist.find(a => a.name === name || (a.user && a.user.name === name));
   if (selected.style.fg === 'red') selected.style.fg = null;
@@ -150,6 +150,8 @@ channels.on('select', (selected) => {
     data = data.map(m => ({ ...m, channel: currentChannel.id })).reverse();
     messagelist = messagelist.concat(data);
     showMessages();
+
+    messages.setLabel(currentChannel.id);
   });
 
   client.send('exclude', name);
@@ -182,7 +184,7 @@ const update = () => {
 
         return ch;
       });
-      const name = (ch) => (ch.isChannel ? `#${ch.name}` : `@${ch.user.name}`) + ` (${ch.id})`;
+      const name = (ch) => (ch.isChannel ? `#${ch.name}` : `@${ch.user.name}`);
       const names = list.map(name);
       channels.setItems(names);
       if (!currentChannel) currentChannel = names[0];
